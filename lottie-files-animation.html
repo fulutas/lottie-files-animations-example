@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie Files - Example </title>
+    <style>
+        
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #181818;
+        }
+
+        button {
+            border-radius: 15px;
+            background-color: chocolate;
+            color: white;
+            padding: 15px;
+            outline: 0;
+            border: 0;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+        .button-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #lottie {
+            width : 300px;
+            height: 120px;
+            position: absolute;
+            transform: translate(-50%, -100%);
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-wrapper">
+        <div id="lottie"></div>  
+        <button id="animate-btn">Animasyonu Uygula</button>
+    </div>
+    
+    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_p0gmdtvp.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+       
+    
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+        
+        
+        <script>
+
+            const button = document.getElementById('animate-btn')
+            const lottie = document.getElementById('lottie')
+            const wrapper = document.querySelector('.button-wrapper')
+
+            var animation = bodymovin.loadAnimation({
+                container: lottie, // Required
+                path: '1373-confetti-throw.json', // Required
+                renderer: 'svg/canvas/html', // Required
+                loop: false, // Optional
+                autoplay: false, // Optional
+                name: "Hello World", // Name for future reference. Optional.
+                });
+            
+            // animasyon hızı ayarlanır. 1 normal
+            animation.setSpeed(2)
+
+            // animasyon bittiğinde kaybol.    
+            animation.addEventListener('complete', () => wrapper.style.overflow  = 'hidden')
+            
+            button.addEventListener('click', () => {
+                wrapper.style.overflow = 'initial'
+                animation.stop()
+                animation.play()
+            })
+        </script>
+
+</body>
+</html>
