@@ -8,7 +8,7 @@ Lottie Files Web Site
 https://lottiefiles.com/
 ```
 
-Lottie API
+Lottie API Docs
 ```
 https://airbnb.io/lottie/#/web?id=usage
 ```
